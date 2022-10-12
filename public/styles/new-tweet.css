@@ -4,14 +4,13 @@
   flex-direction: column;
   justify-content: space-around;
 }
+#new-tweet label {
+  font-weight: 600;
+}
 
 #tweet-text {
   background-color: #f4f1ec;
-  /* border-bottom-width: 5px;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-right-width: 0px; */
-  border-width: 0 0 5px 0;
+  border-width: 0 0 4px 0;
 }
 
 .tweet-button {
@@ -20,7 +19,7 @@
 }
 
 button {
-  background-color: #0b0874;
+  background-color: #4055a1;
   font-family: 'Bungee', cursive;
   color: white;
   border-width: 0;

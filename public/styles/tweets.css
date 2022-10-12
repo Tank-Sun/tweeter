@@ -1,0 +1,62 @@
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+  border-width: 4px;
+  border-style: solid;
+  margin-bottom: 20px;
+}
+
+article:hover {
+  box-shadow: 6px 6px #c5cbe3;
+}
+
+article header {
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 0 auto;
+}
+
+article .at {
+  font-weight: 600;
+  color: #c5cbe3;
+}
+
+article .tweet {
+  width: 97%;
+  margin: 0 auto;
+  border-width: 0 0 4px 0;
+  border-style: solid;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+article footer {
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 0 auto;
+  font-size: 70%;
+  font-weight: 600;
+}
+
+footer .icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  color:#4055a1;
+}
+
+footer .fa-flag:hover {
+  color: orange;
+}
+
+footer .fa-retweet:hover {
+  color: orange;
+}
+
+footer .fa-heart:hover {
+  color: orange;
+}
