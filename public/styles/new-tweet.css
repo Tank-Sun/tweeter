@@ -4,6 +4,18 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
+.error {
+  display: flex;
+  align-items: center;
+  color: #D8000C;
+	background-color: #FFBABA;
+}
+
+#error-message {
+  margin-left: 15px;
+}
+
 #new-tweet label {
   font-weight: 600;
 }

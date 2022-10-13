@@ -5,6 +5,7 @@
  */
 
 $(document).ready(function() {
+  $('.new-tweet .error').hide();
 
   const loadTweets = function() {
     $.ajax({
@@ -59,11 +60,16 @@ $(document).ready(function() {
 
   $("#new-tweet").submit(function(event){
     event.preventDefault();
+    $('.new-tweet .error').slideUp('fast');
     const $charLength = $(this).children('#tweet-text').val().length;
     if ($charLength === 0) {
-      alert(`Empty tweet cannot be submitted.`);
+      // alert(`Empty tweet cannot be submitted.`);
+      $('.new-tweet #error-message').text('Empty tweet cannot be submitted.');
+      $('.new-tweet .error').slideDown();
     } else if ($charLength > 140) {
-      alert(`The maximum message length is 140 characters.`);
+      // alert(`The maximum message length is 140 characters.`);
+      $('.new-tweet #error-message').text('The maximum message length is 140 characters.');
+      $('.new-tweet .error').slideDown();
     } else {
       const dataToSend = $(this).serialize();      
       $.ajax({
