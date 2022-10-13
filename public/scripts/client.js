@@ -58,7 +58,7 @@ $(document).ready(function() {
     }
   }
 
-  $("#new-tweet").submit(function(event){
+  $("#new-tweet").submit(function(event) {
     event.preventDefault();
     $('.new-tweet .error').slideUp('fast');
     const $charLength = $(this).children('#tweet-text').val().length;
@@ -78,6 +78,8 @@ $(document).ready(function() {
         data: dataToSend
       })
       .then(() => {
+        $(this).children('#tweet-text').val('');
+        $(this).children('#tweet-text').focus();
         $.ajax({
           url: '/tweets',
           method: 'GET'
