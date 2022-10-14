@@ -5,25 +5,12 @@
  */
 
 $(document).ready(function() {
+  // Hide error message when the page load
   $('.new-tweet .error').hide();
 
-  const loadTweets = function() {
-    $.ajax({
-      url: '/tweets',
-      method: 'GET'
-    })
-    .then(function(tweets) {
-      renderTweets(tweets);
-    })
-    .catch((error) => {
-      console.log('error:', error);
-    });
-  };
-
-  loadTweets();
-
+  // create the tweet HTML structure when passing in the tweet object
   const createTweetElement = function(tweet) {
-    const escape = function (str) {
+    const escape = function(str) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
@@ -49,37 +36,60 @@ $(document).ready(function() {
       </article>
     `);
     return $tweet;
-  }
+  };
 
+  // Loop through the tweets data, turn them into HTML and add them in reverse-chronological order
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
     }
-  }
+  };
 
+  // Get the tweets data from /tweets, render them to our page
+  const loadTweets = function() {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET'
+    })
+    .then(function(tweets) {
+      renderTweets(tweets);
+    })
+    .catch((error) => {
+      console.log('error:', error);
+    });
+  };
+
+  loadTweets();
+
+  // When the form is submitted, validate the data,
+  // send it to the database and render it dynamically to our page
   $("#new-tweet").submit(function(event) {
     event.preventDefault();
+
+    // Validate the tweet, show or hide the error messages
     $('.new-tweet .error').slideUp('fast');
     const $charLength = $(this).children('#tweet-text').val().length;
     if ($charLength === 0) {
-      // alert(`Empty tweet cannot be submitted.`);
       $('.new-tweet #error-message').text('Empty tweet cannot be submitted.');
       $('.new-tweet .error').slideDown();
     } else if ($charLength > 140) {
-      // alert(`The maximum message length is 140 characters.`);
       $('.new-tweet #error-message').text('The maximum message length is 140 characters.');
       $('.new-tweet .error').slideDown();
     } else {
-      const dataToSend = $(this).serialize();      
+      const dataToSend = $(this).serialize();
       $.ajax({
         method: 'POST',
         url: '/tweets',
         data: dataToSend
       })
       .then(() => {
+        // Clear the textarea, re-focus on it, reset the counter
         $(this).children('#tweet-text').val('');
         $(this).children('#tweet-text').focus();
+        $(this).find('.counter').val(140);
+
+        // Get the new data, render it to our page
         $.ajax({
           url: '/tweets',
           method: 'GET'
@@ -96,7 +106,7 @@ $(document).ready(function() {
         console.log('error:',error);
       });
     }
-  })
+  });
 
 });
 

@@ -3,6 +3,7 @@ nav {
   width: 100%;
   top: 0;
   left: 0;
+  padding: 0 1.5em;
   display: flex;
   background-color: #4055A1;
   height: 120px;
@@ -13,14 +14,12 @@ nav {
 
 #logo {
   font-family: 'Bungee', cursive;
-  margin-left: 1.5em;
   margin-bottom: 0.5em;
   font-size: 40px;
 }
 
 #words {
   display: flex;
-  margin-right: 1.5em;
   margin-bottom: 0.3em;
   flex-direction: column;
   align-items: center;
