@@ -15,7 +15,6 @@ html {
  */
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
@@ -25,7 +24,24 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  justify-content: space-around; 
+}
+
 main {
-  width: 90%;
-  margin: 0 auto;
+  width: 45%;
+  margin-top: 250px;
+}
+
+@media only screen and (max-width: 1023px) {
+  body {
+    flex-direction: column;
+  }
+  main {
+    width: 90%;
+    margin: 50px auto;
+
+  }
 }
